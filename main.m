@@ -133,7 +133,7 @@ for i = 1:23
     print(figurenameString,'-dpng');
 end
 
-% filter for 0 to 1% centrality using entropy (nch) not impact parameter
+% filter 0 to 1% centrality data using entropy (nch) not impact parameter
 % (b)
 filenameString = ['Pb_Pb_d0.8_w0.4_5TeV.txt'];
 data = readtable(filenameString);
