@@ -3,6 +3,7 @@ clear all;
 % only)
 for i = 1:6
     for j = 1:5
+        % can find data via link in file largeData.txt
         filenameString = ['Pb_Pb_d' num2str(0.6+i*0.1) '_w' num2str(0.2+j*0.2) '_bmax1.7427.txt']; % b=1.7427 estimate for 1% percentile impact paramater
         data = readtable(filenameString);
         e2 = table2array(data(:,5:5));
