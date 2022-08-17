@@ -1,6 +1,5 @@
 clear all;
-% contour plot of <e3>/<e2> for different (d,w) pairs (0 to 1% centrality data
-% only)
+% contour plot of <e3>/<e2> for different (d,w) pairs (0 to 1% centrality data only)
 for i = 1:6
     for j = 1:5
         % can find data via link in file largeData.txt
@@ -134,8 +133,7 @@ for i = 1:23
     print(figurenameString,'-dpng');
 end
 
-% filter 0 to 1% centrality data using entropy (nch) not impact parameter
-% (b)
+% filter 0 to 1% centrality data using entropy (nch) not impact parameter (b)
 filenameString = ['Pb_Pb_d0.8_w0.4_5TeV.txt'];
 data = readtable(filenameString);
 nch = table2array(data(:,4:4));
