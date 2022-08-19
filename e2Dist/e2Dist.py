@@ -8,7 +8,7 @@ from matplotlib import rcParams
 
 rcParams['font.size'] = 14
 rcParams['text.color'] = 'black'
-# rcParams['font.family'] = 'sans-serif'
+rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Helvetica']
 rcParams['pdf.fonttype'] = 42
 
