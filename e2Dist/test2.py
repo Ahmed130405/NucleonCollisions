@@ -34,8 +34,18 @@ def yaml_to_df(file_path):
     v_n = [contents['independent_variables'][0]['values'][i]['value'] for i in range(len(contents['independent_variables'][0]['values']))]
     prob = [contents['dependent_variables'][0]['values'][i]['value'] for i in range(len(contents['dependent_variables'][0]['values']))]
     error_stat = [contents['dependent_variables'][0]['values'][i]['errors'][0]['symerror'] for i in range(len(contents['dependent_variables'][0]['values']))]
-    d = {'v_n':v_n,'prob':prob,'error_stat':error_stat}
+    error_sys = []
+    for i in range(len(contents['dependent_variables'][0]['values'])):
+        symerror = 'symerror' in contents['dependent_variables'][0]['values'][i]['errors'][1].keys()
+        if symerror:
+            error_sys.append(contents['dependent_variables'][0]['values'][i]['errors'][1]['symerror'])
+        else:
+            ave_sys = 0.5*sum(list(map(abs,list(contents['dependent_variables'][0]['values'][i]['errors'][1]['asymerror'].values()))))
+            error_sys.append(ave_sys)
+    error = [m.sqrt(error_stat[i]**2+error_sys[i]**2) for i in range(len(error_stat))]
+    d = {'v_n':v_n,'prob':prob,'error':error}
     df = pd.DataFrame(d)
     return df
 
-print(yaml_to_df(_gdownload(share_link,filename)).iloc[:,0])
+print(yaml_to_df(_gdownload(share_link,filename)))
+
